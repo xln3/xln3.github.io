@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>xln&#39;s blog</title>
+    <link>https://xln3.github.io/</link>
+    <description>Recent content on xln&#39;s blog</description>
+    <image>
+      <title>xln&#39;s blog</title>
+      <url>https://xln3.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://xln3.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.141.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 17 Jan 2025 23:35:13 +0800</lastBuildDate>
+    <atom:link href="https://xln3.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Set Fail2ban in 3 Minutes</title>
+      <link>https://xln3.github.io/posts/set-fail2ban-in-3-minutes/</link>
+      <pubDate>Fri, 17 Jan 2025 23:35:13 +0800</pubDate>
+      <guid>https://xln3.github.io/posts/set-fail2ban-in-3-minutes/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install fail2ban &lt;span class=&#34;c1&#34;&gt;# `sudo apt update`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vi /etc/fail2ban/jail.local &lt;span class=&#34;c1&#34;&gt;# only edit local config file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;DEFAULT&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;bantime&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 10d &lt;span class=&#34;c1&#34;&gt;# Ban duration: 10 days&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;findtime&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 1d
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;maxretry&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# if 3 times fail in 1 day then ban&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;ignoreip&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 127.0.0.1/8 ::1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;sshd&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;enabled&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;port&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; ssh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;filter&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; sshd
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;logpath&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; %&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;sshd_log&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;s &lt;span class=&#34;c1&#34;&gt;# or `logpath = /var/log/auth.log`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart fail2ban
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; fail2ban &lt;span class=&#34;c1&#34;&gt;# Enable auto-start on boot&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl status fail2ban.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fail2ban-client status sshd &lt;span class=&#34;c1&#34;&gt;# Check SSH jail status&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo tail -f /var/log/fail2ban.log &lt;span class=&#34;c1&#34;&gt;# Monitor real-time bans&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo iptables -L -n &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep REJECT
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo cat /var/log/auth.log
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;m-minute, d-day, none-second.&lt;/li&gt;
+&lt;li&gt;search in vi: press &lt;code&gt;/word&lt;/code&gt; then Enter. &lt;code&gt;n&lt;/code&gt; for next and &lt;code&gt;N&lt;/code&gt; for previous.&lt;/li&gt;
+&lt;li&gt;ignoreip
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;127.0.0.1/8&lt;/code&gt; refers to the IPv4 loopback address range. The &lt;code&gt;/8&lt;/code&gt; notation indicates this covers all addresses from 127.0.0.0 to 127.255.255.255. These addresses are used for local communications within the same machine.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;::1&lt;/code&gt; is the IPv6 loopback address, which serves the same purpose as 127.0.0.1 but for IPv6 networks.&lt;/li&gt;
+&lt;li&gt;多个 IP 地址之间使用空格分隔&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;ref: &lt;a href=&#34;https://c.biancheng.net/view/q0lfdu8.html&#34;&gt;Fail2Ban入门教程（非常详细） - C语言中文网&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>Test_action</title>
+      <link>https://xln3.github.io/posts/test_action/</link>
+      <pubDate>Fri, 17 Jan 2025 23:35:13 +0800</pubDate>
+      <guid>https://xln3.github.io/posts/test_action/</guid>
+      <description>&lt;p&gt;publish or polish
+lalalal&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
