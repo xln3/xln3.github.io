@@ -15,16 +15,16 @@
     <atom:link href="https://xln3.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AGX Orin更新JetPack从5.1到6.2</title>
-      <link>https://xln3.github.io/posts/orin-agx-jetpack-5-to-6-by-sdkmanager/orin-agx-jetpack-5-to-6-by-sdkmanager/</link>
+      <link>https://xln3.github.io/posts/orin-agx-jetpack-5-to-6-by-sdkmanager/</link>
       <pubDate>Thu, 06 Mar 2025 21:25:15 +0800</pubDate>
-      <guid>https://xln3.github.io/posts/orin-agx-jetpack-5-to-6-by-sdkmanager/orin-agx-jetpack-5-to-6-by-sdkmanager/</guid>
+      <guid>https://xln3.github.io/posts/orin-agx-jetpack-5-to-6-by-sdkmanager/</guid>
       <description>&lt;p&gt;参考&lt;a href=&#34;https://docs.nvidia.com/sdk-manager/install-with-sdkm-jetson/index.html&#34;&gt;官网&lt;/a&gt;和&lt;a href=&#34;https://blog.csdn.net/weixin_53776054/article/details/128552701&#34;&gt;博客&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;1-orin-agx-物理连接到主机&#34;&gt;1. Orin AGX 物理连接到主机&lt;/h2&gt;
 &lt;h3 id=&#34;11-连转接线&#34;&gt;1.1 连转接线&lt;/h3&gt;
 &lt;p&gt;使用Orin自己的USB-TypeC转接线。（图方便想用小米充电线失败）。USB连电脑，TypeC连Orin的电源&lt;strong&gt;键&lt;/strong&gt;那一侧的C口，&lt;strong&gt;而不是&lt;/strong&gt;电源线同侧。电源线同侧的C口是C口电源线。&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;这是连左侧C口，Orin进入Recovery状态，管理员powershell 显示。Recovery状态：长按中间键，然后按右键，先松右键，再送中间键。此时DP连接的显示屏黑屏。注意跟网上host是虚拟机的教程不同的点是，Win的PowerShell上显示的是APX，这可能会造成误解。 &lt;img loading=&#34;lazy&#34; src=&#34;attachment/4102c34a3e8659c608cb0787708c0f8d.png&#34;&gt;&lt;/li&gt;
-&lt;li&gt;这是连左侧C口，Orin正常开机状态，显示屏显示开机。&lt;img loading=&#34;lazy&#34; src=&#34;attachment/16614316bca854e72cda0b09abb1375c.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;这是连左侧C口，Orin进入Recovery状态，管理员powershell 显示。Recovery状态：长按中间键，然后按右键，先松右键，再送中间键。此时DP连接的显示屏黑屏。注意跟网上host是虚拟机的教程不同的点是，Win的PowerShell上显示的是APX，这可能会造成误解。 ![](../../assets/Orin AGX JetPack 5 to 6 by sdkmanager/attachment/4102c34a3e8659c608cb0787708c0f8d.png)&lt;/li&gt;
+&lt;li&gt;这是连左侧C口，Orin正常开机状态，显示屏显示开机。![](../../assets/Orin AGX JetPack 5 to 6 by sdkmanager/attachment/16614316bca854e72cda0b09abb1375c.png)&lt;/li&gt;
 &lt;li&gt;连右侧C口时list中少一行，没有识别任何东西。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;12-安装usbipd&#34;&gt;1.2 安装usbipd&lt;/h3&gt;
@@ -48,7 +48,7 @@
 &lt;li&gt;WSL中查看USB设备 &lt;code&gt;lsusb&lt;/code&gt;。&lt;strong&gt;为了避免后面FLASH时候断连，可以加-a参数，用 &lt;code&gt;usbipd attach -i 0955:7023 -w Ubuntu-22.04 -a&lt;/code&gt; 保持自动连接。&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;左图时主机终端显示，右图是WSL显示
 &lt;ol&gt;
-&lt;li&gt;&lt;img loading=&#34;lazy&#34; src=&#34;attachment/dc570c0073e9b457e104d6c97f9fbcd3.png&#34;&gt; &lt;img loading=&#34;lazy&#34; src=&#34;attachment/69026c87ad5e929a3438a0104021d699.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;![](../../assets/Orin AGX JetPack 5 to 6 by sdkmanager/attachment/dc570c0073e9b457e104d6c97f9fbcd3.png) ![](../../assets/Orin AGX JetPack 5 to 6 by sdkmanager/attachment/69026c87ad5e929a3438a0104021d699.png)&lt;/li&gt;
 &lt;li&gt;Recovery状态的设备，应该在WSL中显示 &lt;code&gt;NVIDIA Corp. APX&lt;/code&gt;。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
