@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://xln3.github.io/posts/orin-agx-jetpack-5-to-6-by-sdkmanager/</loc>
-    <lastmod>2025-03-06T21:25:15+08:00</lastmod>
-  </url><url>
     <loc>https://xln3.github.io/posts/</loc>
-    <lastmod>2025-03-06T21:25:15+08:00</lastmod>
+    <lastmod>2025-03-12T13:55:44+08:00</lastmod>
+  </url><url>
+    <loc>https://xln3.github.io/posts/tensorrt-llm-on-agxorin-%E5%AE%89%E8%A3%85%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2025-03-12T13:55:44+08:00</lastmod>
   </url><url>
     <loc>https://xln3.github.io/</loc>
+    <lastmod>2025-03-12T13:55:44+08:00</lastmod>
+  </url><url>
+    <loc>https://xln3.github.io/posts/orin-agx-jetpack-5-to-6-by-sdkmanager/</loc>
     <lastmod>2025-03-06T21:25:15+08:00</lastmod>
   </url><url>
     <loc>https://xln3.github.io/posts/set-fail2ban-in-3-minutes/</loc>
